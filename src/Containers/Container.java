@@ -1,6 +1,5 @@
 package Containers;
 
-import java.util.ArrayList;
 
 public abstract class Container implements Comparable<Container> {
     private int ID;
@@ -28,36 +27,7 @@ public abstract class Container implements Comparable<Container> {
         return new LiquidContainer(ID, weight);
     }
 
-
     public abstract double consumption();
-
-    public static ArrayList<ArrayList<Container>> sortType(ArrayList<Container> containers) {
-        ArrayList<ArrayList<Container>> typesContainer = new ArrayList<>();
-
-        ArrayList<Container> basicContainer = new ArrayList<>();
-        ArrayList<Container> heaveContainer = new ArrayList<>();
-        ArrayList<Container> refrigeratedContainer = new ArrayList<>();
-        ArrayList<Container> liquidContainerContainer = new ArrayList<>();
-
-        for (Container container : containers) {
-
-            if (container instanceof BasicContainer) {
-                basicContainer.add(container);
-            } else if (container instanceof RefrigeratedContainer) {
-                refrigeratedContainer.add(container);
-            } else if (container instanceof LiquidContainer) {
-                liquidContainerContainer.add(container);
-            } else {
-                heaveContainer.add(container);
-            }
-        }
-
-        typesContainer.add(basicContainer);
-        typesContainer.add(heaveContainer);
-        typesContainer.add(refrigeratedContainer);
-        typesContainer.add(liquidContainerContainer);
-        return typesContainer;
-    }
 
     private void setID(int ID) {
         if (ID < 0) throw new IndexOutOfBoundsException("The id port can't be negative!");

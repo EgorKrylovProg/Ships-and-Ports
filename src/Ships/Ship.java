@@ -199,7 +199,7 @@ public class Ship implements IShip {
         ArrayList<String> refrigeratedId = new ArrayList<>();
         ArrayList<String> liquidContainerId = new ArrayList<>();
 
-        for (Container container: containers) {
+        for (Container container: this.getCurrentContainers()) {
 
             if (container instanceof BasicContainer) {
                 basicId.add(String.valueOf(container.getID()));
