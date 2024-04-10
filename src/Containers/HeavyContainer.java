@@ -8,7 +8,7 @@ public class HeavyContainer extends Container {
 
     @Override
     public double consumption() {
-        return getWeight() * 3.0;
+        return getWeight() * 0.3;
     }
 
 }

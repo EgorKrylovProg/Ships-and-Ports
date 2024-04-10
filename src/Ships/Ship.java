@@ -58,7 +58,7 @@ public class Ship implements IShip {
         double fuelRequired = fuelConsumptionPerKM * distance; // the fuel required for a ship without containers
 
         for (Container container : containers) {
-            fuelRequired += container.consumption() * distance; // adding fuel spend from the containers
+            fuelRequired += container.consumption(); // adding fuel spend from the containers
         }
         return fuelRequired;
     }
@@ -70,7 +70,7 @@ public class Ship implements IShip {
         double distanceToOtherPort = Port.calculationDistance(currentPort, port);
         double fuelRequired = fuelConsumption(distanceToOtherPort);
 
-        if (fuelRequired < fuel) {
+        if (fuelRequired <= fuel) {
             fuel -= fuelRequired;
             currentPort.outgoingShip(this);
             currentPort = port;
@@ -90,7 +90,7 @@ public class Ship implements IShip {
         boolean canLoad = false;
         boolean checkTotalWeight = container.getWeight() + currentTotalWeight <= totalWeightCapacity;
         boolean checkQuantityAllContainers = currentNumberOfAllContainers <= maxNumberOfAllContainers;
-        if (currentPort.getContainers().contains(container) || checkTotalWeight || checkQuantityAllContainers) {
+        if (currentPort.getContainers().contains(container) && checkTotalWeight && checkQuantityAllContainers) {
 
             if (container instanceof HeavyContainer) {
                 if (currentNumberOfHeaveContainers > maxNumberOfHeaveContainers) {

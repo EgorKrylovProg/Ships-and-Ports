@@ -8,6 +8,6 @@ public class BasicContainer extends Container {
 
     @Override
     public double consumption() {
-        return getWeight() * 2.5;
+        return getWeight() * 0.7;
     }
 }

@@ -8,6 +8,6 @@ public class LiquidContainer extends HeavyContainer {
 
     @Override
     public double consumption() {
-        return getWeight() * 4.0;
+        return getWeight() * 0.4;
     }
 }
